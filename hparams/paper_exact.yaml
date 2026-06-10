@@ -6,7 +6,7 @@
 # Seed needs to be set at top of yaml, before objects with parameters are made
 seed: 1235
 __set_seed: !apply:torch.manual_seed [!ref <seed>]
-output_folder: !ref results/slu_baseline_repo/<seed>
+output_folder: !ref results/slu_baseline_paper/<seed>
 save_folder: !ref <output_folder>/save
 train_log: !ref <output_folder>/train_log.txt
 
@@ -42,7 +42,7 @@ ASR_encoder_dim: 256
 # Encoding parameters
 activation: !name:torch.nn.LeakyReLU
 dropout: 0.15
-cnn_blocks: 2
+cnn_blocks: 1
 cnn_channels: (64, 128)
 inter_layer_pooling_size: (2, 2)
 cnn_kernelsize: (3, 3)
