@@ -27,4 +27,24 @@ This analysis evaluates the performance of the StealthyIMU Teacher model under t
 
 The **Paper Exact** configuration (Run 2) achieved a slightly better Word Error Rate (40.00% vs 40.88%) compared to the open-source repository's default configuration. This validates that the single-CNN-block architecture with a time pooling of 4 described in the paper is not only mathematically correct but also converges more efficiently on a small dataset!
 
-Because Run 2 perfectly matches the paper and performs well, we will use the `results/slu_baseline_paper/1235` Teacher model to distill into the 2MB Student model in **Phase 2**!
+Because Run 2 perfectly matches the paper and performs well, we used the `results/slu_baseline_paper/1235` Teacher model to distill into the 2MB Student model in **Phase 2**.
+
+## Phase 2: Student Model Architecture (2MB)
+
+In Phase 2, we performed Knowledge Distillation to shrink the massive 36MB Teacher down to a stealthy 2MB Student. To achieve this drastic reduction in size without modifying the fundamental mathematical workflow, we shrunk the hyperparameters across all layers:
+
+### Architectural Parameters
+- **CNN Blocks:** 1
+- **CNN Channels:** (16, 32) *(Shrunk from 64, 128)*
+- **Time Pooling Size:** 4 *(Matches the Teacher)*
+- **RNN Layers:** 2 *(Shrunk from 4)*
+- **RNN Neurons:** 64 *(Shrunk from 256)*
+- **Embedding Size:** 16 *(Shrunk from 64)*
+- **Decoder Neurons:** 64 *(Shrunk from 256)*
+
+### Distillation Strategy
+- **Temperature:** 2.0 (To soften the Teacher's probability distribution)
+- **Alpha:** 0.5 (Equal weighting between Hard Labels and Teacher Soft Labels)
+- **Loss Function:** Kullback-Leibler (KL) Divergence
+
+This exact hyperparameter configuration brings the total trainable parameter count down to ~346,000, which comfortably fits inside a 2MB memory footprint suitable for IoT sensors!

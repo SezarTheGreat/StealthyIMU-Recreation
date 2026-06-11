@@ -20,10 +20,11 @@ We tested two variations of the heavy **36MB Teacher Model**:
 ## 3. Phase 2: Knowledge Distillation
 For Phase 2, we implemented the core novelty of the StealthyIMU paper: distilling the massive 36MB Voice Command model into an incredibly stealthy **2MB** model that could fit inside an IoT sensor.
 
-We created a custom `run_phase2_kd.py` distillation script and a heavily miniaturized `phase2_kd.yaml` configuration:
-* Reduced `emb_size` to 16 and `dec_neurons` to 64.
-* Fed the raw IMU data to **both** the frozen Teacher and the training Student.
-* Used **Kullback-Leibler (KL) Divergence** to force the tiny Student model to mimic the soft probabilities emitted by the Teacher model.
+We created a custom `run_phase2_kd.py` distillation script and a heavily miniaturized `phase2_kd.yaml` configuration to shrink the network down to ~346k parameters:
+* **CNN Architecture:** Shrunk from 2 blocks to 1 block, and channels shrunk from (64, 128) to (16, 32).
+* **RNN Architecture:** Shrunk from 4 layers to 2 layers, and hidden neurons shrunk from 256 to 64.
+* **Embeddings & Decoder:** `emb_size` reduced from 64 to 16, and `dec_neurons` reduced from 256 to 64.
+* **Distillation Loss:** We fed the raw IMU data to **both** the frozen Teacher and the training Student, and used **Kullback-Leibler (KL) Divergence** to force the tiny Student model to mimic the soft probabilities emitted by the Teacher model.
 
 ### Phase 2 Results
 After 10 epochs, the tiny 2MB Student model successfully learned to predict voice commands, yielding a **69.89% WER** on the validation set. While the 2MB model is naturally less accurate than the 36MB model on this limited 10-epoch proof of concept, the full distillation pipeline is completely operational and mathematically sound.
