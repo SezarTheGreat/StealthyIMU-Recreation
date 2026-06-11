@@ -9,3 +9,4 @@ results/
 # Python Cache
 __pycache__/
 *.pyc
+/StealthyIMU_Colab_Export.zip
