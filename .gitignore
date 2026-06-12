@@ -10,3 +10,7 @@ results/
 __pycache__/
 *.pyc
 /StealthyIMU_Colab_Export.zip
+
+# JetBrains IDE settings
+.idea/
+
