@@ -14,3 +14,4 @@ __pycache__/
 # JetBrains IDE settings
 .idea/
 
+/StealthyIMU_All_Phases.zip
