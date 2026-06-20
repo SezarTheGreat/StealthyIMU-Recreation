@@ -243,6 +243,8 @@ class SLU(sb.Brain):
             self.checkpointer.save_and_keep_only(
                 meta={"WER": stage_stats["WER"]}, min_keys=["WER"],
             )
+            # Save a separate, persistent checkpoint for every epoch
+            self.checkpointer.save_checkpoint(name=f"epoch_{epoch}")
         elif stage == sb.Stage.TEST:
             self.hparams.train_logger.log_stats(
                 stats_meta={"Epoch loaded": self.hparams.epoch_counter.current},
