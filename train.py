@@ -163,7 +163,9 @@ class SLU(sb.Brain):
                                     "|", ","
                                 )
                             )
-                        except SyntaxError:  # need this if the output is not a valid dictionary
+                            if not isinstance(dict, dict):
+                                raise TypeError("Parsed literal is not a dictionary")
+                        except (SyntaxError, ValueError, TypeError, Exception):  # catch all parsing and type errors
                             dict = {
                                 "scenario": "none",
                                 "action": "none",
