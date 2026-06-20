@@ -4,7 +4,8 @@ StealthyIMU_dataset/
 /venv
 
 # Training Outputs (Do not commit heavy weights and logs)
-results/
+results/*
+!results/sampled_dataset/
 
 # Python Cache
 __pycache__/
