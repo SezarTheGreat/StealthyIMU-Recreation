@@ -14,14 +14,14 @@ train_log: !ref <output_folder>/train_log.txt
 file_name: metadata/stealthyIMU_all_relative.csv
 data_folder: StealthyIMU_dataset/
 train_splits: ["train_synthetic", "train_real"]
-csv_train: !ref results/sampled_dataset/train-type=direct.csv
-csv_valid: !ref results/sampled_dataset/valid-type=direct.csv
-csv_test: !ref results/sampled_dataset/test-type=direct.csv
+csv_train: !ref <output_folder>/train-type=direct.csv
+csv_valid: !ref <output_folder>/valid-type=direct.csv
+csv_test: !ref <output_folder>/test-type=direct.csv
 tokenizer_file: !ref pretrain/51_unigram.model
-skip_prep: True
+skip_prep: False
 
 # Training parameters
-number_of_epochs: 10
+number_of_epochs: 30
 batch_size: 8
 lr: 0.0003
 token_type: unigram # ["unigram", "bpe", "char"]
