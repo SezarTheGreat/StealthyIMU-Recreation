@@ -158,21 +158,21 @@ class SLU(sb.Brain):
 
                         ''' entity'''
                         try:
-                            dict = ast.literal_eval(
+                            pred_dict = ast.literal_eval(
                                 " ".join(predicted_semantics[i]).replace(
                                     "|", ","
                                 )
                             )
-                            if not isinstance(dict, dict):
+                            if not isinstance(pred_dict, dict):
                                 raise TypeError("Parsed literal is not a dictionary")
                         except (SyntaxError, ValueError, TypeError, Exception):  # catch all parsing and type errors
-                            dict = {
+                            pred_dict = {
                                 "scenario": "none",
                                 "action": "none",
                                 "entities": [],
                             }
-                        dict["file"] = id_to_file[ids[i]]
-                        writer.write(dict)
+                        pred_dict["file"] = id_to_file[ids[i]]
+                        writer.write(pred_dict)
 
         return loss
 
