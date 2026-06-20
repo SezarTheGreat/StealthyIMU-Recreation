@@ -60,7 +60,11 @@ class SLU_KD(train.SLU):
         if stage == sb.Stage.TRAIN and self.batch_count % train.show_results_every != 0:
             return p_seq_student, wav_lens, logits_student, logits_teacher
         else:
-            p_tokens, scores = self.hparams.beam_searcher(encoder_out, wav_lens)
+            search_results = self.hparams.beam_searcher(encoder_out, wav_lens)
+            if len(search_results) == 4:
+                p_tokens, _, scores, _ = search_results
+            else:
+                p_tokens, scores = search_results
             return p_seq_student, wav_lens, p_tokens, logits_student, logits_teacher
 
     def compute_objectives(self, predictions, batch, stage):
