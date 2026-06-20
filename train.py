@@ -188,7 +188,17 @@ class SLU(sb.Brain):
         predictions = self.compute_forward(batch, sb.Stage.TRAIN)
         loss = self.compute_objectives(predictions, batch, sb.Stage.TRAIN)
         loss.backward()
-        if self.check_gradients(loss):
+        try:
+            should_step = self.check_gradients(loss)
+        except TypeError:
+            self.check_gradients()
+            if self.max_grad_norm > 0.0:
+                torch.nn.utils.clip_grad_norm_(
+                    self.modules.parameters(), self.max_grad_norm
+                )
+            should_step = True
+
+        if should_step:
             self.optimizer.step()
         self.optimizer.zero_grad()
         self.batch_count += 1
