@@ -143,14 +143,20 @@ if __name__ == "__main__":
     (train_set, valid_set, test_set, tokenizer) = train.dataio_prepare(hparams)
 
     run_on_main(hparams["pretrainer"].collect_files)
-    hparams["pretrainer"].load_collected(device=run_opts["device"])
+    try:
+        hparams["pretrainer"].load_collected(device=run_opts["device"])
+    except TypeError:
+        hparams["pretrainer"].load_collected()
 
     # Load Teacher HParams
     print("Loading Teacher Model...")
     with open("hparams/paper_exact.yaml") as f:
         teacher_hparams = load_hyperpyyaml(f, {"seed": 1235})
     
-    teacher_hparams["pretrainer"].load_collected(device=run_opts["device"])
+    try:
+        teacher_hparams["pretrainer"].load_collected(device=run_opts["device"])
+    except TypeError:
+        teacher_hparams["pretrainer"].load_collected()
 
     # Initialize SLU_KD Brain
     slu_brain = SLU_KD(
