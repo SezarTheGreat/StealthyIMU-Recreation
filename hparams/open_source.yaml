@@ -11,7 +11,7 @@ save_folder: !ref <output_folder>/save
 train_log: !ref <output_folder>/train_log.txt
 
 # Data files
-file_name: metadata/stealthyIMU_all_relative.csv
+file_name: metadata/stealthyIMU_all.csv
 data_folder: StealthyIMU_dataset/
 train_splits: ["train_synthetic", "train_real"]
 csv_train: !ref <output_folder>/train-type=direct.csv
