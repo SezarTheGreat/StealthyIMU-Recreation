@@ -157,6 +157,7 @@ if __name__ == "__main__":
     with open("hparams/paper_exact.yaml") as f:
         teacher_hparams = load_hyperpyyaml(f, {"seed": 1235})
     
+    run_on_main(teacher_hparams["pretrainer"].collect_files)
     try:
         teacher_hparams["pretrainer"].load_collected(device=run_opts["device"])
     except TypeError:

@@ -1,0 +1,14 @@
+numpy
+scipy
+matplotlib
+pandas
+scikit-learn
+soundfile
+librosa
+numba
+hyperpyyaml
+tqdm
+speechbrain
+torch
+torchaudio
+jsonlines
