@@ -1,0 +1,71 @@
+2026-06-13 17:05:03,564 - speechbrain.core - INFO - Beginning experiment!
+2026-06-13 17:05:03,565 - speechbrain.core - INFO - Experiment folder: results/slu_baseline_paper/1235
+2026-06-13 17:05:04,054 - speechbrain.utils.superpowers - DEBUG - argcomplete==3.6.3
+click==8.4.1
+colorama==0.4.6
+packaging==26.2
+pipx==1.14.0
+platformdirs==4.10.0
+userpath==1.9.2
+
+
+2026-06-13 17:05:04,120 - speechbrain.utils.superpowers - DEBUG - b56f0cc
+
+
+2026-06-13 17:05:04,533 - speechbrain.utils.parameter_transfer - DEBUG - Collecting files (or symlinks) for pretraining in results\slu_baseline_paper\1235\save\SLURM_tokenizer.
+2026-06-13 17:05:04,537 - speechbrain.pretrained.fetching - INFO - Destination 51_unigram.model: local file in C:\Users\Dilip Kumar Barman\OneDrive\Desktop\StealthyIMU Recreation\pretrain\51_unigram.model.
+2026-06-13 17:05:04,540 - speechbrain.utils.parameter_transfer - INFO - Loading pretrained files for: tokenizer
+2026-06-13 17:05:04,548 - speechbrain.core - INFO - Info: ckpt_interval_minutes arg from hparam file is used
+2026-06-13 17:05:04,553 - speechbrain.core - INFO - 9.0M trainable parameters in SLU
+2026-06-13 17:05:07,075 - speechbrain.utils.checkpoints - INFO - Would load a checkpoint here, but none found yet.
+2026-06-13 17:05:07,075 - speechbrain.utils.epoch_loop - INFO - Going into epoch 1
+2026-06-13 17:09:18,911 - speechbrain.core - INFO - Beginning experiment!
+2026-06-13 17:09:18,913 - speechbrain.core - INFO - Experiment folder: results/slu_baseline_paper/1235
+2026-06-13 17:09:19,492 - speechbrain.utils.superpowers - DEBUG - argcomplete==3.6.3
+click==8.4.1
+colorama==0.4.6
+packaging==26.2
+pipx==1.14.0
+platformdirs==4.10.0
+userpath==1.9.2
+
+
+2026-06-13 17:09:19,584 - speechbrain.utils.superpowers - DEBUG - b56f0cc
+
+
+2026-06-13 17:09:20,802 - speechbrain.utils.parameter_transfer - DEBUG - Collecting files (or symlinks) for pretraining in results\slu_baseline_paper\1235\save\SLURM_tokenizer.
+2026-06-13 17:09:20,804 - speechbrain.pretrained.fetching - INFO - Fetch 51_unigram.model: Using existing file/symlink in results\slu_baseline_paper\1235\save\SLURM_tokenizer\tokenizer.ckpt.
+2026-06-13 17:09:20,805 - speechbrain.utils.parameter_transfer - INFO - Loading pretrained files for: tokenizer
+2026-06-13 17:09:20,807 - speechbrain.core - INFO - Info: ckpt_interval_minutes arg from hparam file is used
+2026-06-13 17:09:20,808 - speechbrain.core - ERROR - Exception:
+Traceback (most recent call last):
+  File "C:\Users\Dilip Kumar Barman\OneDrive\Desktop\StealthyIMU Recreation\train.py", line 374, in <module>
+    slu_brain = SLU(
+                ^^^^
+  File "C:\Users\Dilip Kumar Barman\OneDrive\Desktop\StealthyIMU Recreation\venv\Lib\site-packages\speechbrain\core.py", line 625, in __init__
+    torch.cuda.set_device(int(self.device[-1]))
+  File "C:\Users\Dilip Kumar Barman\OneDrive\Desktop\StealthyIMU Recreation\venv\Lib\site-packages\torch\cuda\__init__.py", line 651, in set_device
+    torch._C._cuda_setDevice(device)
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'torch._C' has no attribute '_cuda_setDevice'
+2026-06-13 17:10:00,418 - speechbrain.core - INFO - Beginning experiment!
+2026-06-13 17:10:00,418 - speechbrain.core - INFO - Experiment folder: results/slu_baseline_paper/1235
+2026-06-13 17:10:00,840 - speechbrain.utils.superpowers - DEBUG - argcomplete==3.6.3
+click==8.4.1
+colorama==0.4.6
+packaging==26.2
+pipx==1.14.0
+platformdirs==4.10.0
+userpath==1.9.2
+
+
+2026-06-13 17:10:00,901 - speechbrain.utils.superpowers - DEBUG - b56f0cc
+
+
+2026-06-13 17:10:01,619 - speechbrain.utils.parameter_transfer - DEBUG - Collecting files (or symlinks) for pretraining in results\slu_baseline_paper\1235\save\SLURM_tokenizer.
+2026-06-13 17:10:01,620 - speechbrain.pretrained.fetching - INFO - Fetch 51_unigram.model: Using existing file/symlink in results\slu_baseline_paper\1235\save\SLURM_tokenizer\tokenizer.ckpt.
+2026-06-13 17:10:01,620 - speechbrain.utils.parameter_transfer - INFO - Loading pretrained files for: tokenizer
+2026-06-13 17:10:01,623 - speechbrain.core - INFO - Info: ckpt_interval_minutes arg from hparam file is used
+2026-06-13 17:10:01,624 - speechbrain.core - INFO - 9.0M trainable parameters in SLU
+2026-06-13 17:10:04,244 - speechbrain.utils.checkpoints - INFO - Would load a checkpoint here, but none found yet.
+2026-06-13 17:10:04,244 - speechbrain.utils.epoch_loop - INFO - Going into epoch 1
